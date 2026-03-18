@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0.9;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 700px;
+    z-index: 2;
+}
+
+/* ─────────────── Search Bar – enhanced, glowing, glassmorphic ─────────────── */
+.search-container {
+    position: absolute;
+    top: 58%;           /* adjust this to position it nicely under the logo */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    width: 90%;
+    max-width: 680px;
+    text-align: center;
+}
+
+.search-box {
+    width: 100%;
+    padding: 20px 32px;
+    font-size: 1.5em;
+    font-weight: 500;
+    background: linear-gradient(135deg, rgba(50, 0, 100, 0.75), rgba(90, 0, 140, 0.65));
+    border: 3px solid #b24cd8;
+    border-radius: 60px;
+    color: #f0e0ff;
+    outline: none;
+    box-shadow: 
+        0 0 30px rgba(178, 76, 216, 0.5),
+        inset 0 0 15px rgba(255, 105, 180, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.4s ease;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.search-box::placeholder {
+    color: #d19aff;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+.search-box:focus {
+    border-color: #ff33ff;
+    box-shadow: 
+        0 0 60px rgba(255, 51, 255, 0.7),
+        inset 0 0 20px rgba(255, 105, 180, 0.4);
+    background: linear-gradient(135deg, rgba(80, 0, 140, 0.85), rgba(120, 0, 180, 0.75));
+    transform: scale(1.03);
+    color: #ffffff;
+}
+
+/* Optional: subtle glow pulse on load */
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 30px rgba(178, 76, 216, 0.5); }
+    50%      { box-shadow: 0 0 50px rgba(255, 51, 255, 0.65); }
+}
+.search-box {
+    animation: glow-pulse 6s infinite ease-in-out;
+}
+
+/* ────────────────────────────────────────── */
+
+.sub {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    font-size: 3em;
+    color: #da70d6;
+    text-shadow: 0 0 50px #800080;
+    z-index: 3;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    z-index: 9999;
+}
+
+#player {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#title {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    color: #ff00ff;
+    z-index: 10;
+    pointer-events: none;
+}
+
+button {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    padding: 18px 34px;
+    background: #800080;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 1.35em;
+    z-index: 10001;
+    box-shadow: 0 0 35px #800080;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #c71585;
+    box-shadow: 0 0 70px #ff00ff;
+    transform: translateY(-4px);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 50px;
+    padding: 80px 5vw;
+}
+
+.card {
+    background: rgba(40, 0, 80, 0.8);
+    border: 10px solid #9932cc;
+    border-radius: 40px;
+    padding: 60px 20px;
+    text-align: center;
+    font-size: 2.2em;
+    cursor: pointer;
+    box-shadow: 0 0 80px #800080;
+    transition: 0.4s;
+    backdrop-filter: blur(4px);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 120px #ff00ff;
+    border-color: #ff00ff;
+}
