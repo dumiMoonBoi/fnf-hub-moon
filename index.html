@@ -11,21 +11,27 @@
     margin: 20px auto;
     max-width: 600px;
     padding: 0 15px;
-    
-    /* The only things we actually need for sticking */
+
+    /* ── only these 3 lines make it sticky ── */
     position: sticky;
     top: 0;
-    z-index: 999;           /* Just high enough to stay on top of cards */
-    
-    /* Keep your original look exactly the same */
-    background: transparent;   /* or whatever it was — usually none needed */
+    z-index: 100;
 }
 
-/* Optional: Make sure the input doesn't get covered weirdly */
 #search-input {
-    background: #222;          /* keep your dark input bg */
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
     border: 2px solid #444;
+    border-radius: 8px;
+    background: #222;
     color: white;
+    outline: none;
+}
+
+#search-input:focus {
+    border-color: #ff66aa;
+    box-shadow: 0 0 8px rgba(255, 102, 170, 0.5);
 }
 
 /* If cards ever look like they're going under the bar, add this tiny padding trick */
