@@ -7,25 +7,30 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* Quick search bar styling — feel free to move to style.css */
-       #search-container {
+      #search-container {
     margin: 20px auto;
     max-width: 600px;
     padding: 0 15px;
     
-    /* Make it sticky */
+    /* The only things we actually need for sticking */
     position: sticky;
     top: 0;
-    z-index: 1000;               /* Stay above other content */
-    background: #111;            /* Solid background so text doesn't show through when scrolling */
-    backdrop-filter: blur(8px);  /* Optional: nice frosted glass look (supported in most modern browsers) */
-    padding-top: 15px;           /* A bit more breathing room at the top */
-    padding-bottom: 15px;
-    border-bottom: 1px solid #333; /* Optional subtle separator */
+    z-index: 999;           /* Just high enough to stay on top of cards */
+    
+    /* Keep your original look exactly the same */
+    background: transparent;   /* or whatever it was — usually none needed */
 }
 
-/* Optional: slight shadow when stuck */
-#search-container.stuck {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+/* Optional: Make sure the input doesn't get covered weirdly */
+#search-input {
+    background: #222;          /* keep your dark input bg */
+    border: 2px solid #444;
+    color: white;
+}
+
+/* If cards ever look like they're going under the bar, add this tiny padding trick */
+main {
+    padding-top: 1px;   /* super small — prevents overlap glitches in some browsers */
 }
         .card.hidden {
             display: none !important;
