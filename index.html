@@ -3,579 +3,565 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moon FNF Hub [BACK]</title>
+    <title>Moon FNF Hub</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Quick search bar styling — feel free to move to style.css */
-      #search-container {
-    margin: 20px auto;
-    max-width: 600px;
-    padding: 0 15px;
-
-    /* ── only these 3 lines make it sticky ── */
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-#search-input {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 16px;
-    border: 2px solid #444;
-    border-radius: 8px;
-    background: #222;
-    color: white;
-    outline: none;
-}
-
-#search-input:focus {
-    border-color: #ff66aa;
-    box-shadow: 0 0 8px rgba(255, 102, 170, 0.5);
-}
-
-/* If cards ever look like they're going under the bar, add this tiny padding trick */
-main {
-    padding-top: 1px;   /* super small — prevents overlap glitches in some browsers */
-}
-        .card.hidden {
-            display: none !important;
-        }
-    </style>
-    <script>
-    function playMod(url, name) {
-        document.getElementById('player').src = url;
-        document.getElementById('title').innerText = name;
-        document.getElementById('overlay').style.display = 'block';
-        document.getElementById('player').requestFullscreen();
-    }
-    function exit() {
-        document.getElementById('overlay').style.display = 'none';
-        document.exitFullscreen();
-    }
-
-    // Real-time search filter
-    function filterMods() {
-        const input = document.getElementById('search-input').value.toLowerCase();
-        const cards = document.querySelectorAll('.card');
-
-        cards.forEach(card => {
-            const text = card.querySelector('p').innerText.toLowerCase();
-            if (text.includes(input)) {
-                card.classList.remove('hidden');
-            } else {
-                card.classList.add('hidden');
-            }
-        });
-    }
-    </script>
 </head>
 <body>
-    <div id="overlay">
-        <iframe id="player" allow="fullscreen" allowfullscreen></iframe>
-        <div id="title"></div>
-        <button onclick="exit()">Exit</button>
-    </div>
 
-    <header>
-        <img src="moon-logo.png" class="logo">
-        <p class="sub">MOON• API • GOGUARDIAN CAN'T STOP US!!!!</p>
-    </header>
-
-    <main>
-        <!-- Search bar added here -->
-  <div id="search-container">
-    <input type="text" id="search-input" placeholder="Search mods (e.g. Whitty, Sonic, Bambi...)" onkeyup="filterMods()">
+<!-- ══════════════════════════════════════════
+     PLAYER OVERLAY
+══════════════════════════════════════════ -->
+<div id="overlay">
+    <iframe id="player" allow="fullscreen" allowfullscreen></iframe>
+    <div id="title"></div>
+    <button onclick="exitMod()">✕ Exit</button>
 </div>
 
-        <div class="grid">
-            <!-- 500+ Mods All Added -->
-                 <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin','Base Game')"><p>Base Game</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty','Vs Whitty')"><p>Vs Whitty</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tricky','Vs Tricky')"><p>Vs Tricky</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy','Vs Shaggy')"><p>Vs Shaggy</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hex','Vs Hex')"><p>Vs Hex</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt','Vs Matt')"><p>Vs Matt</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tabi','Vs Tabi')"><p>Vs Tabi</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-agoti','Vs Agoti')"><p>Vs Agoti</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-kapi','Vs Kapi')"><p>Vs Kapi</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sunday','Vs Sunday')"><p>Vs Sunday</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-carol','Vs Carol')"><p>Vs Carol</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-zardy','Vs Zardy')"><p>Vs Zardy</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-impostor','Vs Impostor')"><p>Vs Impostor</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sonic-exe','Vs Sonic.EXE')"><p>Vs Sonic.EXE</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sky','Vs Sky')"><p>Vs Sky</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-neo','Neo Mod')"><p>Neo Mod</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-b-side-redux','B-Sides')"><p>B-Sides</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-hd','HD Mod')"><p>HD Mod</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-soft','Soft Mod')"><p>Soft Mod</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-garcello','Vs Garcello')"><p>Vs Garcello</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-mid-fight-masses','Mid-Fight Masses')"><p>Mid-Fight Masses</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-indie-cross','Vs Indie Cross')"><p>Vs Indie Cross</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bambi-strident-crisis','Vs Bambi')"><p>Vs Bambi</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-d-sides','D-Sides')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-minus','Minus Mod')"><p>Minus</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob-and-bosip','Vs Bob & Bosip')"><p>Vs Bob & Bosip</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs QT','Vs QT')"><p>Vs QT</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-annie','Vs Annie')"><p>Vs Annie</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nonsense','Vs Nonsense')"><p>Vs Nonsense</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-mario-wii','Vs Mario Wii')"><p>Vs Mario Wii</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-mario-exe','Vs Mario.EXE')"><p>Vs Mario.EXE</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-ourple-guy','Vs Ourple Guy')"><p>Vs Ourple Guy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-dave-and-bambi','Vs Dave & Bambi')"><p>Vs Dave & Bambi</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hypno','Vs Hypno')"><p>Vs Hypno</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hank','Vs Hank')"><p>Vs Hank</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sl4sh','Vs SL4SH')"><p>Vs SL4SH</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-charlie','Vs Charlie')"><p>Vs Charlie</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-pibby','Vs Pibby')"><p>Vs Pibby</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-corrupted-spongebob','Corrupted SpongeBob')"><p>Corrupted SpongeBob</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-mario-is-missing','Vs Mario Is Missing')"><p>Vs Mario Is Missing</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tord','Vs Tord')"><p>Vs Tord</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-ron','Vs Ron')"><p>Vs Ron</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-miku','Vs Miku')"><p>Vs Miku</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-monika','Vs Monika')"><p>Vs Monika</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-steve','Vs Steve')"><p>Vs Steve</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-alice','Vs Alice')"><p>Vs Alice</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-huggy-wuggy','Vs Huggy Wuggy')"><p>Vs Huggy Wuggy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-mom-car','Vs Mommy Mearest Car')"><p>Mom Car</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-retrospecter','Vs Retrospecter')"><p>Vs Retrospecter</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-ace','Vs Ace')"><p>Vs Ace</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-uncle-funkin','Vs Uncle Funkin')"><p>Vs Uncle Funkin</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pibby-corrupted','Vs Pibby Corrupted')"><p>Vs Pibby Corrupted</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-yeahman','Vs Yeahman')"><p>Vs Yeahman</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-omori','Vs OMORI')"><p>Vs OMORI</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-squidward-tricky-mod','Squidward Tricky')"><p>Squidward Tricky</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-saltys-sunday-night','Salty Sunday Night')"><p>Salty Sunday Night</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nyan-cat','Vs Nyan Cat')"><p>Vs Nyan Cat</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-human-impostor-v2','Vs Human Impostor V2')"><p>Vs Human Impostor V2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-megaman-vs-dustman-let-there-be-light','MegaMan Vs Dustman')"><p>MegaMan Vs Dustman</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-impostor-2025-updog','Vs Impostor UPDOG')"><p>Vs Impostor UPDOG</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-halloween-night-funkin','Halloween Night')"><p>Halloween Night</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-banbans-eden','Banban Eden')"><p>Banban Eden</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-double-trouble-vs-emma-cuackbert','Double Trouble Emma')"><p>Double Trouble Emma</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-x-event','The X Event')"><p>The X Event</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-annie','Vs Annie')"><p>Vs Annie</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-clip','Vs Clip')"><p>Vs Clip</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-accelerant-hank','Vs Accelerant Hank')"><p>Vs Accelerant Hank</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-electro-funkin-mod','Electro Funkin')"><p>Electro Funkin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-big-brother','Vs Big Brother')"><p>Vs Big Brother</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-stickman','Vs Stickman')"><p>Vs Stickman</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-flippy','Vs Flippy')"><p>Vs Flippy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-tabi-ex-boyfriend','Vs TABI Ex')"><p>Vs TABI Ex</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sonic-exe-2-0','Vs Sonic.EXE 2.0')"><p>Vs Sonic.EXE 2.0</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sans','Vs Sans')"><p>Vs Sans</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-girlfriend','Vs Girlfriend')"><p>Vs Girlfriend</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tree','Vs Tree')"><p>Vs Tree</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-soul-springs','Soul Springs')"><p>Soul Springs</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pibby-apocalypse','Pibby Apocalypse')"><p>Pibby Apocalypse</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-yourself','Vs Yourself')"><p>Vs Yourself</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/something-about-friday-night-funkin','Something About FNF')"><p>Something About FNF</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-duo-pack','Duo Pack')"><p>Duo Pack</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-but-bad','But Bad')"><p>But Bad</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tails-exe','Vs Tails.EXE')"><p>Vs Tails.EXE</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-corruption','Corruption')"><p>Corruption</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-boxing-fight','Vs Matt Boxing')"><p>Vs Matt Boxing</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-flipped-out','Vs Flippy Flipped Out')"><p>Flippy Flipped Out</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sunday-remastered','Vs Sunday Remastered')"><p>Vs Sunday Remastered</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-hit-single','Hit Single Real')"><p>Hit Single Real</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-flavor-rave','Flavor Rave')"><p>Flavor Rave</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-gorefield','Gorefield V2')"><p>Gorefield V2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-twiddlefinger','Twiddlefinger')"><p>Twiddlefinger</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-soft-v2','Soft V2')"><p>Soft V2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hypnos-lullaby','Hypno's Lullaby')"><p>Hypno's Lullaby</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-marios-madness','Mario's Madness')"><p>Mario's Madness</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-funkin-at-freddys','Funkin' at Freddy's')"><p>Funkin' at Freddy's</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-rewrite','Vs Rewrite')"><p>Vs Rewrite</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-analog-funkin','Analog Funkin')"><p>Analog Funkin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-wii-funkin','Wii Funkin')"><p>Wii Funkin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-suicide-mouse','Vs Suicide Mouse')"><p>Vs Suicide Mouse</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-golden-apple','Vs Dave & Bambi Golden Apple')"><p>Golden Apple</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-minus-sarvente','Vs Minus Sarvente')"><p>Vs Minus Sarvente</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-nevada-tricky-hank','Nevada Tricky Hank Mix')"><p>Nevada Tricky Hank</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-sonic-jam','Sonic Jam')"><p>Sonic Jam</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-reimu-funkin-incident','Reimu Funkin' Incident')"><p>Reimu Incident</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-lit-up-darnell','Lit Up Darnell Mix')"><p>Lit Up Darnell</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-jeb-madness','Vs Jeb Madness')"><p>Vs Jeb Madness</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-shaggy-remastered','Shaggy Remastered')"><p>Shaggy Remastered</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hornet','Vs Hornet Remake')"><p>Vs Hornet Remake</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-library-of-ruin','Library Of Ruin')"><p>Library Of Ruin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pico-offensive','Pico VERY Offensive')"><p>Pico Offensive</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-funk-space-omori','Funk Space vs Omori')"><p>Funk Space Omori</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-shot-to-the-top','Shot to the Top')"><p>Shot to the Top</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-hit-single-real','Hit Single Real')"><p>Hit Single Real</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-flavor-rave','Flavor Rave')"><p>Flavor Rave</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-gorefield-v2','Gorefield V2')"><p>Gorefield V2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-twiddlefinger','Twiddlefinger')"><p>Twiddlefinger</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-corruption','Corruption')"><p>Corruption</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bricked-up','Bricked Up')"><p>Bricked Up</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nonsense-v1-5','Vs Nonsense v1.5')"><p>Vs Nonsense v1.5</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-akage-reimagined','AKAGE: Reimagined')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-rewrite-round-2','Vs Rewrite ROUND 2')"><p>Vs Rewrite ROUND 2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-step-right-up','Step Right Up')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-funkadelix','Funkadelix')"><p>Funkadelix</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-from-the-top','From The Top')"><p>From The Top</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-monster-of-monsters','Monster of Monsters')"><p>Monster of Monsters</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-impostor-2035-updog','Vs Impostor 2035 (Updog)')"><p>Vs Impostor 2035</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-qt-rewired','QT: Rewired')"><p>QT: Rewired</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-analog-funkin','Analog Funkin')"><p>Analog Funkin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-wii-funkin','Wii Funkin')"><p>Wii Funkin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-minus-sarvente','Vs Minus Sarvente')"><p>Vs Minus Sarvente</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-lit-up-darnell-mix','Lit Up (Darnell Mix)')"><p>Lit Up Darnell</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-nevada-tricky-hank-mix','Nevada Tricky Hank Mix')"><p>Nevada Tricky Hank</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tails-exe','Vs Tails.EXE')"><p>Vs Tails.EXE</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hornet-remake','Vs Hornet Remake')"><p>Vs Hornet Remake</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-library-of-ruin','Library Of Ruin')"><p>Library Of Ruin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pico-very-offensive','Pico VERY Offensive')"><p>Pico Offensive</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shyzuli','Vs Shyzuli (Gacha)')"><p>Vs Shyzuli</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-scary-hour','Scary Hour: A Silly Halloween')"><p>Scary Hour Halloween</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-markiplier-montage','Markiplier Montage')"><p>Markiplier Montage</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-petrifying-plumbers','Petrifying Plumbers')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-dimensional-deep-end','Dimensional Deep End')"><p>Dimensional Deep End</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-circuit-zone','The Circuit Zone')"><p>The Circuit Zone</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bfdi-26','BFDI 26')"><p>BFDI 26</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-rhythmic-revolution','Rhythmic Revolution')"><p>Rhythmic Revolution</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-bonus-weekend','Vs Whitty Bonus WeekEND')"><p>Vs Whitty Bonus</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-zam-boyfriend-girlfriend','ZAM! BF & GF')"><p>ZAM! Boyfriend & Girlfriend</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-weekly-tweakmas','FNF Weekly: Tweakmas')"><p>FNF Weekly Tweakmas</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-castle-crashers-war-jam','Castle Crashers War Jam')"><p>Castle Crashers War Jam</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bambis-hellscape','Bambi's Hellscape')"><p>Bambi's Hellscape</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-exe-cuttable-mania','EXEcutable Mania')"><p>EXEcutable Mania</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-tennatunes','TENNATUNES')"><p>TENNATUNES</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-codename','Codename')"><p>Codename</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-illegal-piracy','Illicit Piracy')"><p>Illicit Piracy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-funks-logan','Funks Logan!')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-komashot-oneshot','Komashot! – YKW OneShot')"><p>Komashot! OneShot</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-visitor','Vs Visitor!')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-animation-vs-friday-night-funkin','Animation VS FNF')"><p>Animation VS FNF</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-core','Vs Core')"><p>Vs Core</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-entity-origins-breakout','Entity Origins: BREAKOUT')"><p>Entity Origins BREAKOUT</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-aflac-remastered','VSAflac Remastered')"><p>VSAflac Remastered</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-origami-king','THE ORIGAMI KING')"><p>THE ORIGAMI KING</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-little-man-2','Little Man 2')"><p>Little Man 2</p></div>
-            <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-full-ass-tricky','The Full Ass Tricky')"><p>The Full Ass Tricky</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-impostor-v5','Vs Impostor V5')"><p>Vs Impostor V5</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-psych-engine-demo','Psych Engine Demo')"><p>Psych Engine Demo</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-smoke-em-out-struggle','Smoke Em Out Struggle')"><p>Smoke Em Out Struggle</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-definitive','Vs Whitty Definitive')"><p>Vs Whitty Definitive</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sky-redux','Vs Sky Redux')"><p>Vs Sky Redux</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-step-right-up-adventure','Step Right Up Adventure')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nonsense-v2','Vs Nonsense V2')"><p>Vs Nonsense V2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-akage-reimagined-demo','AKAGE Reimagined Demo')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-rewrite-round-3','Vs Rewrite ROUND 3')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-funkadelix-v2','Funkadelix V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-from-the-top-remix','From The Top Remix')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-monster-of-monsters-v2','Monster of Monsters V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-qt-rewired-v2','QT Rewired V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-minus-sarvente-remastered','Vs Minus Sarvente Remastered')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bfdi-26-update','BFDI 26 Update')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-rhythmic-revolution','Rhythmic Revolution')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-illegal-piracy','Illicit Piracy')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-funks-logan','Funks Logan')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-visitor-2025','Vs Visitor 2025')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-psx-edition-demo','PSX Edition Demo')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-gamebreaker-rewrite','Gamebreaker Rewrite Mix')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-catnap-v2','Vs CatNap V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-atrocity-2025','Atrocity 2025')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-dimension-traveller-remake','Dimension Traveller Remake')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-real-estate-rumble','Real Estate Rumble')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-kero-update','Kero Update')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-demi-edition-v2','DeMI Edition V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bald','Vs Bald')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-darnell-darnellin','Darnell Darnellin')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-kit-axolotl','Vs Kit the Axolotl')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-5b-is-a-fnf-mod','5B is a FNF Mod')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-faithful-funkers','Faithful Funkers')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-marios-madness-v2','Mario's Madness V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-retros','Vs Retros')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-big-sister','Vs Big Sister')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-taki-bigger','Bigger Taki')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-friday-night-pixels','Friday Night Pixels')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-dr-hare-v2','Vs Dr.Hare V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-friday-night-meaty','Friday Night Meaty')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-springy-dearest','Springy Dearest')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-aflac-remastered-v2','VSAflac Remastered V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-little-man-3','Little Man 3')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hornet-2025','Vs Hornet 2025')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pibby-apocalypse-remake','Pibby Apocalypse Remake')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-suicide-mouse-v2','Vs Suicide Mouse V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-golden-apple-v2','Golden Apple V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-nevada-mix-2025','Nevada Mix 2025')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-sonic-jam-remastered','Sonic Jam Remastered')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-reimu-incident-update','Reimu Incident Update')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-lit-up-darnell-v2','Lit Up Darnell V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-jeb-madness-remix','Vs Jeb Madness Remix')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-shaggy-remastered-v2','Shaggy Remastered V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-library-of-ruin-v2','Library Of Ruin V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pico-offensive-remake','Pico Offensive Remake')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-scary-hour-halloween','Scary Hour Halloween Update')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-markiplier-montage-v2','Markiplier Montage V2')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-petrifying-plumbers-update','Petrifying Plumbers Update')</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-dimensional-deep-end-v2','Dimensional Deep End V2')</p></div>
-    <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-starving-artist-2-retaken-sanity','Vs Starving Artist 2')"><p>Vs Starving Artist 2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sky-full-week','Vs Sky Full Week')"><p>Vs Sky Full Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/animation-vs-friday-night-funkin-mod','Animation VS FNF')"><p>Animation VS FNF</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-untitled-goose-mod','Untitled Goose Mod')"><p>Untitled Goose Mod</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-siivagunner-mod-pack','SiIvaGunner Mod Pack')"><p>SiIvaGunner Pack</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-fruit-ninja-mod','Fruit Ninja Mod')"><p>Fruit Ninja Mod</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-touhou-mod-pack','Touhou Mod Pack')"><p>Touhou Mod Pack</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-x-pibby-vs-annoying-orange','Pibby Vs Annoying Orange')"><p>Pibby Annoying Orange</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-after-the-week','After The Week')"><p>After The Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-brainrot-vs-tung-tung-tung-sahur','Brainrot Tung Tung')"><p>Brainrot Tung Tung</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-double-trouble-vs-emma-cuackbert','Double Trouble Emma')"><p>Double Trouble Emma</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-slaughter-me-funkin','Slaughter Me Funkin')"><p>Slaughter Me Funkin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-halloween-night-funkin','Halloween Night Funkin')"><p>Halloween Night Funkin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-impostor-among-us-v4','Vs Impostor V4')"><p>Vs Impostor V4</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-megaman-vs-dustman-let-there-be-light','MegaMan Vs Dustman')"><p>MegaMan Vs Dustman</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-human-impostor-v2','Vs Human Impostor V2')"><p>Vs Human Impostor V2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-saltys-sunday-night','Salty Sunday Night')"><p>Salty Sunday Night</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-squidward-tricky-mod','Squidward Tricky')"><p>Squidward Tricky</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-yeahman','Vs Yeahman')"><p>Vs Yeahman</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-banbans-eden','Banban Eden')"><p>Banban Eden</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-x-event','The X Event')"><p>The X Event</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-twiddlefinger','Twiddlefinger')"><p>Twiddlefinger</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-neo','Neo v3.0')"><p>Neo v3.0</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-starving-artist-2-retaken-sanity','Starving Artist Retaken')"><p>Starving Artist Retaken</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hex-mod-full-week','Vs Hex 2 Weekend')"><p>Vs Hex 2 Weekend</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-impostor-2025-updog','Vs Impostor UPDOG')"><p>Vs Impostor UPDOG</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-corruption','Corruption Invasion')"><p>Corruption Invasion</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-lit-up-darnell-mix','Lit Up Darnell Mix')"><p>Lit Up Darnell Mix</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-nevada-1-vs-tricky-hank-mix','Nevada Tricky Hank')"><p>Nevada Tricky Hank</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-sonic-jam','Sonic Jam')"><p>Sonic Jam</p></div>
-            <!-- ALL Whitty Mods from KBH Games - Insert into your .grid -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-v-s-whitty-full-week','Vs Whitty Full Week')"><p>Vs Whitty Full Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-definitive-edition','Vs Whitty Definitive Edition')"><p>Vs Whitty Definitive</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-whitty-erect','Whitty ERECT')"><p>Whitty ERECT</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-corruption-the-chase','Vs Whitty Corruption')"><p>Vs Whitty Corruption</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-carol-and-whitty-date-week','Carol & Whitty Date')"><p>Carol & Whitty Date</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-whitty-vs-boyfriend-fire-fight-mod','Whitty Fire Fight')"><p>Whitty Fire Fight</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-neo','Vs Whitty Neo')"><p>Vs Whitty Neo</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-whitty-bf-vs-fun-sized-whitty','Fun-Sized Whitty')"><p>Fun-Sized Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-furnace-whitty','Vs Furnace Whitty')"><p>Vs Furnace Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-unexpected-whitty-psych-port','Unexpected Whitty')"><p>Unexpected Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-b-side','Vs Whitty B-Sides')"><p>Vs Whitty B-Sides</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-remixed-full-week','Vs Whitty Remixed')"><p>Vs Whitty Remixed</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-with-lyrics','Vs Whitty Lyrics')"><p>Vs Whitty Lyrics</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-tabi-vs-whitty','Tabi vs Whitty')"><p>Tabi vs Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-fun-size-whitty-on-gospel-and-zavodila','Fun Size Gospel')"><p>Fun Size Whitty Gospel</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-times-up-bf','Time\'s Up BF')"><p>Time\'s Up BF</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-swap-vs-whitty','Swap vs Whitty')"><p>Swap vs Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-whitty-ballistic-blue-burst-remix','Ballistic Blue Burst')"><p>Ballistic Blue Burst</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-a-side-detonator-mod','A-Side Detonator')"><p>A-Side Detonator</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-just-a-whitty-mod','Just a Whitty Mod')"><p>Just a Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-the-return-funkin-vs-whitty-in-2023','Return Funkin 2023')"><p>Return Funkin Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-ignition-vs-whitty','Ignition vs Whitty')"><p>Ignition vs Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-tricky-vs-whitty-mad-overload-madness-x-ballistic','Tricky vs Whitty')"><p>Tricky vs Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-whitty-vs-pico-remix-demolition','Whitty vs Pico')"><p>Whitty vs Pico</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-agoti-tabi-ruv-sings-whitty-definitive-edition','AGOTI/Tabi/Ruv Whitty')"><p>AGOTI/Tabi/Ruv Whitty</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-tricky-whitty-vs-tabi-agoti','Genocider Mashup')"><p>Genocider Mashup</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-lo-fight-but-everyone-sings-it','Lo-Fight Everyone')"><p>Lo-Fight Everyone</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-b3-remixed','Vs Whitty B3 Remixed')"><p>Vs Whitty B3</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-remixed-returned','Whitty Remixed Returned')"><p>Whitty Remixed Returned</p></div>
-            <!-- ALL Matt & Shaggy Mods from KBH Games - Insert into your .grid -->
-<!-- MATT MODS -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-from-wii-sports','Vs Matt 2.0')"><p>Vs Matt 2.0</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/wii-funkin-vs-matt-v3','Wii Funkin Vs Matt V3')"><p>Wii Funkin Vs Matt V3</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-boxing-fight','Vs Matt Boxing Fight')"><p>Vs Matt Boxing Fight</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-wii-funkin-duet-mod','Vs Matt Wii Funkin Duet')"><p>Vs Matt Wii Funkin Duet</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-voiid-sides','Vs Matt Voiid-Sides')"><p>Vs Matt Voiid-Sides</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-deluxe','Vs Matt Deluxe')"><p>Vs Matt Deluxe</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-wiik-100','Vs Matt Wiik 100')"><p>Vs Matt Wiik 100</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-funkin-funkin-vs-matt-eddsworld','Vs Matt Eddsworld')"><p>Vs Matt Eddsworld</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/vs-matt-wiik-1000-fnf-mod','Vs Matt WiiK 1000')"><p>Vs Matt WiiK 1000</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-wiik-4-fanmade','Vs Matt Wiik 4 Fanmade')"><p>Vs Matt Wiik 4</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-i-n-inchiro-au','Vs Matt I.N Inchiro')"><p>Vs Matt I.N</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-tko-but-matt-goes-all-out','TKO Matt All Out')"><p>TKO Matt All Out</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-deluxe-rematch','Vs Matt Deluxe Rematch')"><p>Vs Matt Deluxe Rematch</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-wiik-3-fanmade','Vs Matt WIIK 3')"><p>Vs Matt WIIK 3</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-wiik-b-sides','Vs Matt Wiik B-Sides')"><p>Vs Matt Wiik B-Sides</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-neo','Vs Matt Neo')"><p>Vs Matt Neo</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matts-pursuit-deluxe-edition','Vs Matts Pursuit Deluxe')"><p>Vs Matts Pursuit Deluxe</p></div>
-<!-- SHAGGY MODS -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy','Vs Shaggy v2')"><p>Vs Shaggy v2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy-2-5','Vs Shaggy 2.5')"><p>Vs Shaggy 2.5</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-remastered','Vs Shaggy Remastered')"><p>Vs Shaggy Remastered</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy-hd','Vs Shaggy HD')"><p>Vs Shaggy HD</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-3-0-fan-made','Vs Shaggy 3.0 Fanmade')"><p>Vs Shaggy 3.0</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-only-4-keys','Vs Shaggy 4 Keys')"><p>Vs Shaggy 4 Keys</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy-d-sides','Vs Shaggy D-Sides')"><p>Vs Shaggy D-Sides</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-minus-shaggy','Vs Minus Shaggy')"><p>Vs Minus Shaggy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-blue-shaggy-chapter-7-8-fanmade','Vs Blue Shaggy Ch7/8')"><p>Vs Blue Shaggy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-expurgation-expansion','Vs Shaggy Expurgation')"><p>Vs Shaggy Expurgation</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-god-eater-retrospecter-remix','Shaggy God Eater Remix')"><p>Shaggy God Eater</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-shaggy-sings-endless-with-6k','Shaggy Sings Endless 6k')"><p>Shaggy Endless 6k</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-pixelated-shaggy','Vs Pixelated Shaggy')"><p>Vs Pixelated Shaggy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-pibby-shaggy','Vs Pibby Shaggy')"><p>Vs Pibby Shaggy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-shaggy-sings-big-shot','Shaggy Sings Big Shot')"><p>Shaggy Big Shot</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-golden-apple-with-shaggy-covers-extra-keys','Golden Apple Shaggy')"><p>Golden Apple Shaggy</p></div>
-<!-- SHARED/CROSSOVER MODS (Matt x Shaggy) -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy-x-matt','Vs Shaggy x Matt')"><p>Vs Shaggy x Matt</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-rev-mixed-vs-matt-and-shaggy','Rev-Mixed Matt & Shaggy')"><p>Rev-Mixed Matt Shaggy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-shaggy-x-matt-x-tricky-x-bob-x-whitty-x-zardy','Shaggy Matt Multi')"><p>Shaggy Matt Multi</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-shaggy-x-matt-sad-version','Shaggy x Matt Sad')"><p>Shaggy x Matt Sad</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-x-matt-but-bad','Shaggy x Matt Bad')"><p>Shaggy x Matt Bad</p></div>
-            <!-- ALL Nonsense Mods from KBH Games - Insert into your .grid -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nonsense','Vs Nonsense v2')"><p>Vs Nonsense v2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-nonsense-but-real-irl-in-real-life','Vs Nonsense IRL')"><p>Vs Nonsense IRL</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-nonsense-taeyai-tug-of-war','Nonsense & TaeYai Tug of War')"><p>Nonsense Tug of War</p></div>
-            <!-- ALL Herobrine Mods from KBH Games - Insert into your .grid -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-friday-night-cursed-vs-herobrine','Friday Night Cursed Vs Herobrine')"><p>Friday Night Cursed Vs Herobrine</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-herobrine-reborn','Vs Herobrine Reborn 2.5')"><p>Vs Herobrine Reborn 2.5</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-blocky-myths-vs-herobrine','Blocky Myths Vs Herobrine')"><p>Blocky Myths Vs Herobrine</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-bedrock-bottom-vs-herobrine','Bedrock Bottom Vs Herobrine')"><p>Bedrock Bottom Vs Herobrine</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-herobrine-sighting','Herobrine Sighting')"><p>Herobrine Sighting</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-funkin-craft-vs-herobrine','Funkin Craft Vs Herobrine')"><p>Funkin Craft Vs Herobrine</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-herobrines-curse','Herobrine\'s Curse')"><p>Herobrine\'s Curse</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-minecraft-takeover','Minecraft Takeover')"><p>Minecraft Takeover (Herobrine)</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-minecraft-funky-edition','Minecraft Funky Edition')"><p>Minecraft Funky Edition</p></div>
-            <!-- Additional Popular/Classic Mods -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-hd','FNF HD v4')"><p>FNF HD v4</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-party-week','Party Week')"><p>Party Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-at-5-am','Funkin at 5 AM')"><p>Funkin at 5 AM</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-remnants','FNF Remnants')"><p>FNF Remnants</p></div>
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header>
+    <img src="moon-logo.png" class="logo" alt="Moon FNF Hub">
+    <div class="search-container">
+        <input
+            type="text"
+            id="search-input"
+            class="search-box"
+            placeholder="Search mods (e.g. Whitty, Sonic, Bambi...)"
+            onkeyup="filterMods()"
+            autocomplete="off"
+        >
+        <div id="result-count"></div>
+    </div>
+    <p class="sub">MOON • API • GOGUARDIAN CAN'T STOP US!!!!</p>
+</header>
 
-<!-- More Whitty / Matt / Shaggy Variants (expanding your sections) -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-v-s-whitty-full-week','Vs Whitty Full Week')"><p>Vs Whitty Full Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-definitive-edition','Vs Whitty Definitive Edition')"><p>Vs Whitty Definitive Edition</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/wii-funkin-vs-matt-v3','Wii Funkin Vs Matt V3')"><p>Wii Funkin Vs Matt V3</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy-2-5','Vs Shaggy 2.5')"><p>Vs Shaggy 2.5</p></div>
+<!-- ══════════════════════════════════════════
+     FILTER CHIPS
+══════════════════════════════════════════ -->
+<div id="filter-chips">
+    <div class="chip active" onclick="setFilter('all', this)">All</div>
+    <div class="chip" onclick="setFilter('whitty', this)">Whitty</div>
+    <div class="chip" onclick="setFilter('sonic', this)">Sonic</div>
+    <div class="chip" onclick="setFilter('tricky', this)">Tricky</div>
+    <div class="chip" onclick="setFilter('shaggy', this)">Shaggy</div>
+    <div class="chip" onclick="setFilter('matt', this)">Matt</div>
+    <div class="chip" onclick="setFilter('bob', this)">Bob</div>
+    <div class="chip" onclick="setFilter('bambi', this)">Bambi</div>
+    <div class="chip" onclick="setFilter('pibby', this)">Pibby</div>
+    <div class="chip" onclick="setFilter('exe', this)">.EXE</div>
+    <div class="chip" onclick="setFilter('mario', this)">Mario</div>
+    <div class="chip" onclick="setFilter('minecraft', this)">Minecraft</div>
+    <div class="chip" onclick="setFilter('fnaf', this)">FNAF</div>
+    <div class="chip fav-chip" onclick="toggleFavPanel()">⭐ Favorites</div>
+</div>
 
-<!-- Sky / Neo / Other Character Focused -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sky-full-week','Vs Sky Full Week')"><p>Vs Sky Full Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-sky-reborn','FNF Sky Reborn')"><p>FNF Sky Reborn</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-neo','Neo v3.0')"><p>Neo v3.0</p></div>
+<!-- ══════════════════════════════════════════
+     SORT BAR + MOD COUNT
+══════════════════════════════════════════ -->
+<div id="sort-bar">
+    <label for="sort-select">Sort:</label>
+    <select id="sort-select" onchange="sortMods()">
+        <option value="default">Default</option>
+        <option value="az">A → Z</option>
+        <option value="za">Z → A</option>
+        <option value="favfirst">Favorites First</option>
+    </select>
+</div>
+<div id="mod-count-banner">Loading mods...</div>
 
-<!-- Mid-Fight Masses & Related -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-mid-fight-masses-deluxe-edition','Mid-Fight Masses Deluxe')"><p>Mid-Fight Masses Deluxe</p></div>
+<!-- ══════════════════════════════════════════
+     FAVORITES PANEL
+══════════════════════════════════════════ -->
+<div id="fav-panel">
+    <h2>⭐ Your Favorites</h2>
+    <div id="fav-grid"></div>
+</div>
 
-<!-- Crossovers & Unique Ones -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/animation-vs-friday-night-funkin-mod','Animation VS FNF Full')"><p>Animation VS FNF Full</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-x-event','The X Event Full Week')"><p>The X Event Full Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/funkin-mix','Funkin MIX')"><p>Funkin MIX</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-forsaken','Vs Forsaken')"><p>Vs Forsaken</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-qt-rewired','QT Rewired')"><p>QT Rewired</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/funkadelix-fnf-with-lyrics','FUNKADELIX with Lyrics')"><p>FUNKADELIX Lyrics</p></div>
+<!-- ══════════════════════════════════════════
+     MOD GRID
+══════════════════════════════════════════ -->
+<main>
+    <div id="no-results">No mods found. Try a different search or filter.</div>
+    <div class="grid" id="mod-grid">
 
-<!-- Horror / FNAF / Other Themed -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-fnaf-vs-freddy-chica-foxy-bonnie','Vs FNAF Freddy Crew')"><p>Vs FNAF Freddy Crew</p></div>
-            <!-- ALL Bob Mods from KBH Games - Complete List -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob','Vs Bob')"><p>Vs Bob</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob-v2-0-bobs-onslaught','Vs Bob v2.0 (Bob\'s Onslaught)')"><p>Vs Bob v2.0 Onslaught</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob-and-bosip','Vs Bob and Bosip (Expansion Update)')"><p>Vs Bob & Bosip</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bobs-b-side-onslaught','Bob\'s B-Side Onslaught')"><p>Bob B-Sides Onslaught</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-bob-high-effort','Vs Bob High Effort')"><p>Vs Bob High Effort</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob-remastered','Vs Bob Remastered')"><p>Vs Bob Remastered</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bob-vs-opheebob-mod','Bob vs Opheebob The Date')"><p>Bob & Opheebob Date</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob-velseb','Vs Bob Velseb')"><p>Vs Bob Velseb</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-bob-overhaul','Bob Overhaul')"><p>Bob Overhaul</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bob-corrupted-bf','Bob Corrupted BF')"><p>Bob Corrupted BF</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-funkween-vs-big-bob','FunkWeen Vs Big Bob')"><p>Vs Big Bob (FunkWeen)</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-lets-chat-bob-vs-ron','Let\'s Chat: Bob vs Ron')"><p>Bob vs Ron Chat</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-d-side-bob','Vs D-Side Bob')"><p>Vs D-Side Bob</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bobs-lullaby-mod','Bob\'s Lullaby Mod')"><p>Bob's Lullaby</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/bobs-big-day-literally-every-fnf-mod-return-ever','Bob\'s Big Day – Literally Every FNF Mod Return Ever')"><p>Bob's Big Day</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-shaggy-x-matt-x-tricky-x-bob-x-whitty-x-zardy','Shaggy x Matt x Tricky x Bob x Whitty x Zardy')"><p>Shaggy Matt Tricky Bob Multi</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-ron-3-0','Vs Ron 3.0 (Bob Related)')"><p>Vs Ron 3.0</p></div>
-            <!-- 30 More Functional KBH FNF Mods - Fresh Additions -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pico-school','Pico School')"><p>Pico School</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-qt-mod','Vs QT Mod 2.0')"><p>Vs QT 2.0</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/something-about-friday-night-funkin','Something About FNF')"><p>Something About FNF</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-disney-club','Vs Disney Club')"><p>Vs Disney Club</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nonsense','Vs Nonsense v2')"><p>Vs Nonsense v2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/poppy-funktime-vs-bunzo-bunny-fnf-mod','Poppy Funktime Vs Bunzo')"><p>Vs Bunzo Bunny</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-release-but-everyone-sing-it','Release Everyone Sings')"><p>Release Everyone</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-crimson-eclipse','Crimson Eclipse')"><p>Crimson Eclipse</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sans','Vs Sans')"><p>Vs Sans</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-stickman','Vs Stickman')"><p>Vs Stickman</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-big-brother','Vs Big Brother v2')"><p>Vs Big Brother v2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-scratch-cat','Vs Scratch Cat')"><p>Vs Scratch Cat</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-freddy-fazbear','Vs Freddy Fazbear')"><p>Vs Freddy Fazbear</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/lock-on-friday-night-funkin','Lock-On FNF')"><p>Lock-On FNF</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-skid-and-pump-minus','Skid & Pump Minus')"><p>Skid Pump Minus</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sonic-exe','Vs Sonic.EXE')"><p>Vs Sonic.EXE</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-mashup','FNF Mashup')"><p>FNF Mashup</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tails-secret-histories','Vs Tails Secret Histories')"><p>Vs Tails Histories</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-arrow-funk','Arrow Funk')"><p>Arrow Funk</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-friday-night-cursed-vs-herobrine','Vs Herobrine Cursed')"><p>Vs Herobrine</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-niervin','Vs Niervin')"><p>Vs Niervin</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-omni-man','Vs Omni-Man')"><p>Vs Omni-Man</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-super-funky-idol','Vs Super Funky Idol')"><p>Vs Super Idol</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-sarventes-mid-fight-masses','Sarventes Mid-Fight Masses')"><p>Sarventes Masses</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-kapi','Vs KAPI v2')"><p>Vs KAPI v2</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-foned-in-fnf-mobile','Foned In Mobile')"><p>Foned In</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sky-full-week','Vs Sky Full Week')"><p>Vs Sky Full</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-galaxy-mod','In The Galaxy')"><p>In The Galaxy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-silly-billy-vs-yourself','Silly Billy Vs Yourself')"><p>Silly Billy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-dashing','Friday Night Dashing')"><p>Friday Night Dashing</p></div>
-            <!-- 90 More Functional KBH FNF Mods - Fresh Additions (No Duplicates) -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-garcello','Vs Garcello')"><p>Vs Garcello</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-isaac','Vs Binding Isaac')"><p>Vs Isaac</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-ultrakill','Vs ULTRAKILL')"><p>Vs ULTRAKILL</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-eli','Vs Eli')"><p>Vs Eli</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-volt','Vs Volt')"><p>Vs Volt</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-chira','Vs Chira')"><p>Vs Chira</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-wondernope','Vs WonderNope')"><p>Vs WonderNope</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-fly','Vs FLY')"><p>Vs FLY</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-merg','Vs Merg')"><p>Vs Merg</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-ruria','Vs Ruria')"><p>Vs Ruria</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-cyrix','Vs Cyrix')"><p>Vs Cyrix</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-skelanimals','Vs Skelanimals')"><p>Vs Skelanimals</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-caine','Vs Caine')"><p>Vs Caine</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bogus','Vs Bogus')"><p>Vs Bogus</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-monker','Vs Monker')"><p>Vs Monker</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-kauan','Vs Kauan')"><p>Vs Kauan</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-retrospecter','Vs RetroSpecter')"><p>Vs RetroSpecter</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hood','Vs Hood')"><p>Vs Hood</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sly','Vs Sly Remastered')"><p>Vs Sly</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-rocket','Vs Rocket')"><p>Vs Rocket</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-abigail','Vs Abigail')"><p>Vs Abigail</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-renarso','Vs Renarso')"><p>Vs Renarso</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-him','Vs Him')"><p>Vs Him</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-kiryu','Vs Kiryu')"><p>Vs Kiryu</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-arizona','Vs Arizona')"><p>Vs Arizona</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-slendytubbies','Vs Slendytubbies')"><p>Vs Slendytubbies</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-void','Vs Void')"><p>Vs Void</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-mid-fight-masses-deluxe-edition','Mid-Fight Masses Deluxe')"><p>Mid-Fight Masses Deluxe</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-b-side-redux','B-Side Redux')"><p>B-Side Redux</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-b-sides-rebooted-mod','B-Sides Rebooted')"><p>B-Sides Rebooted</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-b-side','Vs Whitty B-Sides')"><p>Vs Whitty B-Sides</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-neo','Vs Whitty Neo')"><p>Vs Whitty Neo</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-13th-friday-night-funk-blood','13th Friday Funk Blood')"><p>13th Friday Funk Blood</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-holiday-mod','The Holiday Mod')"><p>The Holiday Mod</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-with-extra-key-support','Extra Keys Support')"><p>Extra Keys Support</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-duo-pack','Duo Pack')"><p>Duo Pack</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-character-test-playground','Character Test Playground')"><p>Character Test</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-golf-minigame-ft-miku','Golf Minigame Miku')"><p>Golf Miku</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-fire-in-the-hole','Fire In The Hole')"><p>Fire In The Hole</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-qt-mod','Vs QT 2.0')"><p>Vs QT 2.0</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hex-mod-full-week','Vs Hex Full Week')"><p>Vs Hex Full Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pico-school','Pico School')"><p>Pico School</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-dababy','Vs DaBaby')"><p>Vs DaBaby</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-fevertown-characters-sings-endless','FeverTown Endless')"><p>FeverTown Endless</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sky-full-week','Vs Sky Full Week')"><p>Vs Sky Full Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-hating-simulator-rosegold','Hating Simulator RoseGold')"><p>Hating RoseGold</p></div>
-<!-- Exactly 90 verified playable FNF mods from KBH, avoiding prior duplicates. Insert into your grid! -->
-            <!-- 20 More Functional KBH FNF Mods - Fresh Additions (No Duplicates) -->
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sonic-exe-2-0','Vs Sonic.EXE 2.0')"><p>Vs Sonic.EXE 2.0</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-eddsworld','Vs Eddsworld')"><p>Vs Eddsworld</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-roblox-doors','Vs Roblox Doors')"><p>Vs Roblox Doors</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-indie-cross-crossed-out','Indie Cross Crossed Out')"><p>Indie Cross Crossed Out</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-zardy-foolhardy-mod-pack','Zardy Foolhardy Pack')"><p>Zardy Foolhardy Pack</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-darkness-takeover-vs-pibby-family-guy','Darkness Pibby Family Guy')"><p>Pibby Family Guy</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-lost-my-mind-breaking-point','Lost My Mind Breaking Point')"><p>Lost My Mind</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-undertale-last-breath-vs-sans','Vs Sans Last Breath')"><p>Vs Sans Last Breath</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-bambi-strident-crisis','Vs Bambi Strident Crisis')"><p>Vs Bambi Strident</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-sky-reborn','Vs Sky Reborn')"><p>Vs Sky Reborn</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-qt-rewired','QT Rewired')"><p>QT Rewired</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-fire-in-the-hole','Fire In The Hole')"><p>Fire In The Hole</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-after-the-week','After The Week')"><p>After The Week</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-with-lyrics','With Lyrics')"><p>With Lyrics</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-nerves-but-every-turn-a-different-cover-is-use','Nerves Every Turn')"><p>Nerves Every Turn</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-hatsune-miku','Vs Hatsune Miku')"><p>Vs Hatsune Miku</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-sarventes-mid-fight-masses','Sarventes Mid-Fight Masses')"><p>Sarventes Masses</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/fnf-qt-mod-termination-on-extreme-difficulty','QT Termination Extreme')"><p>QT Termination Extreme</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-void','Vs Void')"><p>Vs Void</p></div>
-<div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-character-test-playground','Character Test Playground')"><p>Character Test</p></div>
-        </div>
-    </main>
+        <!-- ── BASE / CLASSICS ── -->
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin','Base Game')"><button class="fav-btn" onclick="toggleFav(event,'Base Game')">☆</button><p>Base Game</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty','Vs Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty')">☆</button><p>Vs Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tricky','Vs Tricky')"><button class="fav-btn" onclick="toggleFav(event,'Vs Tricky')">☆</button><p>Vs Tricky</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy','Vs Shaggy')"><button class="fav-btn" onclick="toggleFav(event,'Vs Shaggy')">☆</button><p>Vs Shaggy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hex','Vs Hex')"><button class="fav-btn" onclick="toggleFav(event,'Vs Hex')">☆</button><p>Vs Hex</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt','Vs Matt')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt')">☆</button><p>Vs Matt</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tabi','Vs Tabi')"><button class="fav-btn" onclick="toggleFav(event,'Vs Tabi')">☆</button><p>Vs Tabi</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-agoti','Vs Agoti')"><button class="fav-btn" onclick="toggleFav(event,'Vs Agoti')">☆</button><p>Vs Agoti</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-kapi','Vs Kapi')"><button class="fav-btn" onclick="toggleFav(event,'Vs Kapi')">☆</button><p>Vs Kapi</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sunday','Vs Sunday')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sunday')">☆</button><p>Vs Sunday</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-carol','Vs Carol')"><button class="fav-btn" onclick="toggleFav(event,'Vs Carol')">☆</button><p>Vs Carol</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-zardy','Vs Zardy')"><button class="fav-btn" onclick="toggleFav(event,'Vs Zardy')">☆</button><p>Vs Zardy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-impostor','Vs Impostor')"><button class="fav-btn" onclick="toggleFav(event,'Vs Impostor')">☆</button><p>Vs Impostor</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sonic-exe','Vs Sonic.EXE')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sonic.EXE')">☆</button><p>Vs Sonic.EXE</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sky','Vs Sky')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sky')">☆</button><p>Vs Sky</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-neo','Neo Mod')"><button class="fav-btn" onclick="toggleFav(event,'Neo Mod')">☆</button><p>Neo Mod</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-b-side-redux','B-Sides')"><button class="fav-btn" onclick="toggleFav(event,'B-Sides')">☆</button><p>B-Sides</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-hd','HD Mod')"><button class="fav-btn" onclick="toggleFav(event,'HD Mod')">☆</button><p>HD Mod</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-soft','Soft Mod')"><button class="fav-btn" onclick="toggleFav(event,'Soft Mod')">☆</button><p>Soft Mod</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-garcello','Vs Garcello')"><button class="fav-btn" onclick="toggleFav(event,'Vs Garcello')">☆</button><p>Vs Garcello</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-mid-fight-masses','Mid-Fight Masses')"><button class="fav-btn" onclick="toggleFav(event,'Mid-Fight Masses')">☆</button><p>Mid-Fight Masses</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-indie-cross','Vs Indie Cross')"><button class="fav-btn" onclick="toggleFav(event,'Vs Indie Cross')">☆</button><p>Vs Indie Cross</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bambi-strident-crisis','Vs Bambi')"><button class="fav-btn" onclick="toggleFav(event,'Vs Bambi')">☆</button><p>Vs Bambi</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-d-sides','D-Sides')"><button class="fav-btn" onclick="toggleFav(event,'D-Sides')">☆</button><p>D-Sides</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-minus','Minus Mod')"><button class="fav-btn" onclick="toggleFav(event,'Minus Mod')">☆</button><p>Minus</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob-and-bosip','Vs Bob & Bosip')"><button class="fav-btn" onclick="toggleFav(event,'Vs Bob & Bosip')">☆</button><p>Vs Bob & Bosip</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-annie','Vs Annie')"><button class="fav-btn" onclick="toggleFav(event,'Vs Annie')">☆</button><p>Vs Annie</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nonsense','Vs Nonsense')"><button class="fav-btn" onclick="toggleFav(event,'Vs Nonsense')">☆</button><p>Vs Nonsense</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-mario-wii','Vs Mario Wii')"><button class="fav-btn" onclick="toggleFav(event,'Vs Mario Wii')">☆</button><p>Vs Mario Wii</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-mario-exe','Vs Mario.EXE')"><button class="fav-btn" onclick="toggleFav(event,'Vs Mario.EXE')">☆</button><p>Vs Mario.EXE</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-ourple-guy','Vs Ourple Guy')"><button class="fav-btn" onclick="toggleFav(event,'Vs Ourple Guy')">☆</button><p>Vs Ourple Guy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-dave-and-bambi','Vs Dave & Bambi')"><button class="fav-btn" onclick="toggleFav(event,'Vs Dave & Bambi')">☆</button><p>Vs Dave & Bambi</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hypno','Vs Hypno')"><button class="fav-btn" onclick="toggleFav(event,'Vs Hypno')">☆</button><p>Vs Hypno</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hank','Vs Hank')"><button class="fav-btn" onclick="toggleFav(event,'Vs Hank')">☆</button><p>Vs Hank</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sl4sh','Vs SL4SH')"><button class="fav-btn" onclick="toggleFav(event,'Vs SL4SH')">☆</button><p>Vs SL4SH</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-charlie','Vs Charlie')"><button class="fav-btn" onclick="toggleFav(event,'Vs Charlie')">☆</button><p>Vs Charlie</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-pibby','Vs Pibby')"><button class="fav-btn" onclick="toggleFav(event,'Vs Pibby')">☆</button><p>Vs Pibby</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-corrupted-spongebob','Corrupted SpongeBob')"><button class="fav-btn" onclick="toggleFav(event,'Corrupted SpongeBob')">☆</button><p>Corrupted SpongeBob</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-mario-is-missing','Vs Mario Is Missing')"><button class="fav-btn" onclick="toggleFav(event,'Vs Mario Is Missing')">☆</button><p>Vs Mario Is Missing</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tord','Vs Tord')"><button class="fav-btn" onclick="toggleFav(event,'Vs Tord')">☆</button><p>Vs Tord</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-ron','Vs Ron')"><button class="fav-btn" onclick="toggleFav(event,'Vs Ron')">☆</button><p>Vs Ron</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-miku','Vs Miku')"><button class="fav-btn" onclick="toggleFav(event,'Vs Miku')">☆</button><p>Vs Miku</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-monika','Vs Monika')"><button class="fav-btn" onclick="toggleFav(event,'Vs Monika')">☆</button><p>Vs Monika</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-steve','Vs Steve')"><button class="fav-btn" onclick="toggleFav(event,'Vs Steve')">☆</button><p>Vs Steve</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-alice','Vs Alice')"><button class="fav-btn" onclick="toggleFav(event,'Vs Alice')">☆</button><p>Vs Alice</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-huggy-wuggy','Vs Huggy Wuggy')"><button class="fav-btn" onclick="toggleFav(event,'Vs Huggy Wuggy')">☆</button><p>Vs Huggy Wuggy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-mom-car','Mom Car')"><button class="fav-btn" onclick="toggleFav(event,'Mom Car')">☆</button><p>Mom Car</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-retrospecter','Vs Retrospecter')"><button class="fav-btn" onclick="toggleFav(event,'Vs Retrospecter')">☆</button><p>Vs Retrospecter</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-ace','Vs Ace')"><button class="fav-btn" onclick="toggleFav(event,'Vs Ace')">☆</button><p>Vs Ace</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-uncle-funkin','Vs Uncle Funkin')"><button class="fav-btn" onclick="toggleFav(event,'Vs Uncle Funkin')">☆</button><p>Vs Uncle Funkin</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pibby-corrupted','Vs Pibby Corrupted')"><button class="fav-btn" onclick="toggleFav(event,'Vs Pibby Corrupted')">☆</button><p>Vs Pibby Corrupted</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-yeahman','Vs Yeahman')"><button class="fav-btn" onclick="toggleFav(event,'Vs Yeahman')">☆</button><p>Vs Yeahman</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-omori','Vs OMORI')"><button class="fav-btn" onclick="toggleFav(event,'Vs OMORI')">☆</button><p>Vs OMORI</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-squidward-tricky-mod','Squidward Tricky')"><button class="fav-btn" onclick="toggleFav(event,'Squidward Tricky')">☆</button><p>Squidward Tricky</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-saltys-sunday-night','Salty Sunday Night')"><button class="fav-btn" onclick="toggleFav(event,'Salty Sunday Night')">☆</button><p>Salty Sunday Night</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nyan-cat','Vs Nyan Cat')"><button class="fav-btn" onclick="toggleFav(event,'Vs Nyan Cat')">☆</button><p>Vs Nyan Cat</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-human-impostor-v2','Vs Human Impostor V2')"><button class="fav-btn" onclick="toggleFav(event,'Vs Human Impostor V2')">☆</button><p>Vs Human Impostor V2</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-megaman-vs-dustman-let-there-be-light','MegaMan Vs Dustman')"><button class="fav-btn" onclick="toggleFav(event,'MegaMan Vs Dustman')">☆</button><p>MegaMan Vs Dustman</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-impostor-2025-updog','Vs Impostor UPDOG')"><button class="fav-btn" onclick="toggleFav(event,'Vs Impostor UPDOG')">☆</button><p>Vs Impostor UPDOG</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-halloween-night-funkin','Halloween Night')"><button class="fav-btn" onclick="toggleFav(event,'Halloween Night')">☆</button><p>Halloween Night</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-banbans-eden','Banban Eden')"><button class="fav-btn" onclick="toggleFav(event,'Banban Eden')">☆</button><p>Banban Eden</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-double-trouble-vs-emma-cuackbert','Double Trouble Emma')"><button class="fav-btn" onclick="toggleFav(event,'Double Trouble Emma')">☆</button><p>Double Trouble Emma</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-x-event','The X Event')"><button class="fav-btn" onclick="toggleFav(event,'The X Event')">☆</button><p>The X Event</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-clip','Vs Clip')"><button class="fav-btn" onclick="toggleFav(event,'Vs Clip')">☆</button><p>Vs Clip</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-accelerant-hank','Vs Accelerant Hank')"><button class="fav-btn" onclick="toggleFav(event,'Vs Accelerant Hank')">☆</button><p>Vs Accelerant Hank</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-electro-funkin-mod','Electro Funkin')"><button class="fav-btn" onclick="toggleFav(event,'Electro Funkin')">☆</button><p>Electro Funkin</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-big-brother','Vs Big Brother')"><button class="fav-btn" onclick="toggleFav(event,'Vs Big Brother')">☆</button><p>Vs Big Brother</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-stickman','Vs Stickman')"><button class="fav-btn" onclick="toggleFav(event,'Vs Stickman')">☆</button><p>Vs Stickman</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-flippy','Vs Flippy')"><button class="fav-btn" onclick="toggleFav(event,'Vs Flippy')">☆</button><p>Vs Flippy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-tabi-ex-boyfriend','Vs TABI Ex')"><button class="fav-btn" onclick="toggleFav(event,'Vs TABI Ex')">☆</button><p>Vs TABI Ex</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sonic-exe-2-0','Vs Sonic.EXE 2.0')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sonic.EXE 2.0')">☆</button><p>Vs Sonic.EXE 2.0</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sans','Vs Sans')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sans')">☆</button><p>Vs Sans</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-girlfriend','Vs Girlfriend')"><button class="fav-btn" onclick="toggleFav(event,'Vs Girlfriend')">☆</button><p>Vs Girlfriend</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tree','Vs Tree')"><button class="fav-btn" onclick="toggleFav(event,'Vs Tree')">☆</button><p>Vs Tree</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-soul-springs','Soul Springs')"><button class="fav-btn" onclick="toggleFav(event,'Soul Springs')">☆</button><p>Soul Springs</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pibby-apocalypse','Pibby Apocalypse')"><button class="fav-btn" onclick="toggleFav(event,'Pibby Apocalypse')">☆</button><p>Pibby Apocalypse</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-yourself','Vs Yourself')"><button class="fav-btn" onclick="toggleFav(event,'Vs Yourself')">☆</button><p>Vs Yourself</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/something-about-friday-night-funkin','Something About FNF')"><button class="fav-btn" onclick="toggleFav(event,'Something About FNF')">☆</button><p>Something About FNF</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-duo-pack','Duo Pack')"><button class="fav-btn" onclick="toggleFav(event,'Duo Pack')">☆</button><p>Duo Pack</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-but-bad','But Bad')"><button class="fav-btn" onclick="toggleFav(event,'But Bad')">☆</button><p>But Bad</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-tails-exe','Vs Tails.EXE')"><button class="fav-btn" onclick="toggleFav(event,'Vs Tails.EXE')">☆</button><p>Vs Tails.EXE</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-corruption','Corruption')"><button class="fav-btn" onclick="toggleFav(event,'Corruption')">☆</button><p>Corruption</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-boxing-fight','Vs Matt Boxing')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Boxing')">☆</button><p>Vs Matt Boxing</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-flipped-out','Flippy Flipped Out')"><button class="fav-btn" onclick="toggleFav(event,'Flippy Flipped Out')">☆</button><p>Flippy Flipped Out</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sunday-remastered','Vs Sunday Remastered')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sunday Remastered')">☆</button><p>Vs Sunday Remastered</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-hit-single','Hit Single Real')"><button class="fav-btn" onclick="toggleFav(event,'Hit Single Real')">☆</button><p>Hit Single Real</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-flavor-rave','Flavor Rave')"><button class="fav-btn" onclick="toggleFav(event,'Flavor Rave')">☆</button><p>Flavor Rave</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-gorefield','Gorefield V2')"><button class="fav-btn" onclick="toggleFav(event,'Gorefield V2')">☆</button><p>Gorefield V2</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-twiddlefinger','Twiddlefinger')"><button class="fav-btn" onclick="toggleFav(event,'Twiddlefinger')">☆</button><p>Twiddlefinger</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-soft-v2','Soft V2')"><button class="fav-btn" onclick="toggleFav(event,'Soft V2')">☆</button><p>Soft V2</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hypnos-lullaby','Hypno\'s Lullaby')"><button class="fav-btn" onclick="toggleFav(event,'Hypno\'s Lullaby')">☆</button><p>Hypno's Lullaby</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-marios-madness','Mario\'s Madness')"><button class="fav-btn" onclick="toggleFav(event,'Mario\'s Madness')">☆</button><p>Mario's Madness</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-funkin-at-freddys','Funkin\' at Freddy\'s')"><button class="fav-btn" onclick="toggleFav(event,'Funkin at Freddys')">☆</button><p>Funkin' at Freddy's</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-rewrite','Vs Rewrite')"><button class="fav-btn" onclick="toggleFav(event,'Vs Rewrite')">☆</button><p>Vs Rewrite</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-analog-funkin','Analog Funkin')"><button class="fav-btn" onclick="toggleFav(event,'Analog Funkin')">☆</button><p>Analog Funkin</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-wii-funkin','Wii Funkin')"><button class="fav-btn" onclick="toggleFav(event,'Wii Funkin')">☆</button><p>Wii Funkin</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-suicide-mouse','Vs Suicide Mouse')"><button class="fav-btn" onclick="toggleFav(event,'Vs Suicide Mouse')">☆</button><p>Vs Suicide Mouse</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-golden-apple','Golden Apple')"><button class="fav-btn" onclick="toggleFav(event,'Golden Apple')">☆</button><p>Golden Apple</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-minus-sarvente','Vs Minus Sarvente')"><button class="fav-btn" onclick="toggleFav(event,'Vs Minus Sarvente')">☆</button><p>Vs Minus Sarvente</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-nevada-tricky-hank','Nevada Tricky Hank')"><button class="fav-btn" onclick="toggleFav(event,'Nevada Tricky Hank')">☆</button><p>Nevada Tricky Hank</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-sonic-jam','Sonic Jam')"><button class="fav-btn" onclick="toggleFav(event,'Sonic Jam')">☆</button><p>Sonic Jam</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-reimu-funkin-incident','Reimu Incident')"><button class="fav-btn" onclick="toggleFav(event,'Reimu Incident')">☆</button><p>Reimu Incident</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-lit-up-darnell','Lit Up Darnell')"><button class="fav-btn" onclick="toggleFav(event,'Lit Up Darnell')">☆</button><p>Lit Up Darnell</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-jeb-madness','Vs Jeb Madness')"><button class="fav-btn" onclick="toggleFav(event,'Vs Jeb Madness')">☆</button><p>Vs Jeb Madness</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-shaggy-remastered','Shaggy Remastered')"><button class="fav-btn" onclick="toggleFav(event,'Shaggy Remastered')">☆</button><p>Shaggy Remastered</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hornet','Vs Hornet Remake')"><button class="fav-btn" onclick="toggleFav(event,'Vs Hornet Remake')">☆</button><p>Vs Hornet Remake</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-library-of-ruin','Library Of Ruin')"><button class="fav-btn" onclick="toggleFav(event,'Library Of Ruin')">☆</button><p>Library Of Ruin</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pico-offensive','Pico Offensive')"><button class="fav-btn" onclick="toggleFav(event,'Pico Offensive')">☆</button><p>Pico Offensive</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-funk-space-omori','Funk Space Omori')"><button class="fav-btn" onclick="toggleFav(event,'Funk Space Omori')">☆</button><p>Funk Space Omori</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-shot-to-the-top','Shot to the Top')"><button class="fav-btn" onclick="toggleFav(event,'Shot to the Top')">☆</button><p>Shot to the Top</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bricked-up','Bricked Up')"><button class="fav-btn" onclick="toggleFav(event,'Bricked Up')">☆</button><p>Bricked Up</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nonsense-v1-5','Vs Nonsense v1.5')"><button class="fav-btn" onclick="toggleFav(event,'Vs Nonsense v1.5')">☆</button><p>Vs Nonsense v1.5</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-rewrite-round-2','Vs Rewrite ROUND 2')"><button class="fav-btn" onclick="toggleFav(event,'Vs Rewrite ROUND 2')">☆</button><p>Vs Rewrite ROUND 2</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-funkadelix','Funkadelix')"><button class="fav-btn" onclick="toggleFav(event,'Funkadelix')">☆</button><p>Funkadelix</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-from-the-top','From The Top')"><button class="fav-btn" onclick="toggleFav(event,'From The Top')">☆</button><p>From The Top</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-monster-of-monsters','Monster of Monsters')"><button class="fav-btn" onclick="toggleFav(event,'Monster of Monsters')">☆</button><p>Monster of Monsters</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-qt-rewired','QT: Rewired')"><button class="fav-btn" onclick="toggleFav(event,'QT: Rewired')">☆</button><p>QT: Rewired</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sans','Vs Sans')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sans 2')">☆</button><p>Vs Sans</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-boyfriend-himself','Vs Boyfriend Himself')"><button class="fav-btn" onclick="toggleFav(event,'Vs Boyfriend Himself')">☆</button><p>Vs Boyfriend Himself</p></div>
+
+        <!-- ── WHITTY MODS ── -->
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-v-s-whitty-full-week','Vs Whitty Full Week')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty Full Week')">☆</button><p>Vs Whitty Full Week</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-definitive-edition','Vs Whitty Definitive')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty Definitive')">☆</button><p>Vs Whitty Definitive</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-whitty-erect','Whitty ERECT')"><button class="fav-btn" onclick="toggleFav(event,'Whitty ERECT')">☆</button><p>Whitty ERECT</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-corruption-the-chase','Vs Whitty Corruption')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty Corruption')">☆</button><p>Vs Whitty Corruption</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-carol-and-whitty-date-week','Carol & Whitty Date')"><button class="fav-btn" onclick="toggleFav(event,'Carol & Whitty Date')">☆</button><p>Carol & Whitty Date</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-whitty-vs-boyfriend-fire-fight-mod','Whitty Fire Fight')"><button class="fav-btn" onclick="toggleFav(event,'Whitty Fire Fight')">☆</button><p>Whitty Fire Fight</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-neo','Vs Whitty Neo')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty Neo')">☆</button><p>Vs Whitty Neo</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-whitty-bf-vs-fun-sized-whitty','Fun-Sized Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Fun-Sized Whitty')">☆</button><p>Fun-Sized Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-furnace-whitty','Vs Furnace Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Vs Furnace Whitty')">☆</button><p>Vs Furnace Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-unexpected-whitty-psych-port','Unexpected Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Unexpected Whitty')">☆</button><p>Unexpected Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-b-side','Vs Whitty B-Sides')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty B-Sides')">☆</button><p>Vs Whitty B-Sides</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-remixed-full-week','Vs Whitty Remixed')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty Remixed')">☆</button><p>Vs Whitty Remixed</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-with-lyrics','Vs Whitty Lyrics')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty Lyrics')">☆</button><p>Vs Whitty Lyrics</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-tabi-vs-whitty','Tabi vs Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Tabi vs Whitty')">☆</button><p>Tabi vs Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-fun-size-whitty-on-gospel-and-zavodila','Fun Size Gospel')"><button class="fav-btn" onclick="toggleFav(event,'Fun Size Gospel')">☆</button><p>Fun Size Whitty Gospel</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-swap-vs-whitty','Swap vs Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Swap vs Whitty')">☆</button><p>Swap vs Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-whitty-ballistic-blue-burst-remix','Ballistic Blue Burst')"><button class="fav-btn" onclick="toggleFav(event,'Ballistic Blue Burst')">☆</button><p>Ballistic Blue Burst</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-whitty-a-side-detonator-mod','A-Side Detonator')"><button class="fav-btn" onclick="toggleFav(event,'A-Side Detonator')">☆</button><p>A-Side Detonator</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-just-a-whitty-mod','Just a Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Just a Whitty')">☆</button><p>Just a Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-the-return-funkin-vs-whitty-in-2023','Return Funkin Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Return Funkin Whitty')">☆</button><p>Return Funkin Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-ignition-vs-whitty','Ignition vs Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Ignition vs Whitty')">☆</button><p>Ignition vs Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-tricky-vs-whitty-mad-overload-madness-x-ballistic','Tricky vs Whitty')"><button class="fav-btn" onclick="toggleFav(event,'Tricky vs Whitty')">☆</button><p>Tricky vs Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-whitty-vs-pico-remix-demolition','Whitty vs Pico')"><button class="fav-btn" onclick="toggleFav(event,'Whitty vs Pico')">☆</button><p>Whitty vs Pico</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-agoti-tabi-ruv-sings-whitty-definitive-edition','AGOTI/Tabi/Ruv Whitty')"><button class="fav-btn" onclick="toggleFav(event,'AGOTI Tabi Ruv Whitty')">☆</button><p>AGOTI/Tabi/Ruv Whitty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-tricky-whitty-vs-tabi-agoti','Genocider Mashup')"><button class="fav-btn" onclick="toggleFav(event,'Genocider Mashup')">☆</button><p>Genocider Mashup</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-lo-fight-but-everyone-sings-it','Lo-Fight Everyone')"><button class="fav-btn" onclick="toggleFav(event,'Lo-Fight Everyone')">☆</button><p>Lo-Fight Everyone</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-b3-remixed','Vs Whitty B3 Remixed')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty B3 Remixed')">☆</button><p>Vs Whitty B3</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-remixed-returned','Whitty Remixed Returned')"><button class="fav-btn" onclick="toggleFav(event,'Whitty Remixed Returned')">☆</button><p>Whitty Remixed Returned</p></div>
+
+        <!-- ── MATT MODS ── -->
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-from-wii-sports','Vs Matt 2.0')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt 2.0')">☆</button><p>Vs Matt 2.0</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/wii-funkin-vs-matt-v3','Wii Funkin Vs Matt V3')"><button class="fav-btn" onclick="toggleFav(event,'Wii Funkin Vs Matt V3')">☆</button><p>Wii Funkin Vs Matt V3</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-boxing-fight','Vs Matt Boxing Fight')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Boxing Fight')">☆</button><p>Vs Matt Boxing Fight</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-wii-funkin-duet-mod','Vs Matt Wii Funkin Duet')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Wii Funkin Duet')">☆</button><p>Vs Matt Wii Funkin Duet</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-voiid-sides','Vs Matt Voiid-Sides')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Voiid-Sides')">☆</button><p>Vs Matt Voiid-Sides</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-deluxe','Vs Matt Deluxe')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Deluxe')">☆</button><p>Vs Matt Deluxe</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-wiik-100','Vs Matt Wiik 100')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Wiik 100')">☆</button><p>Vs Matt Wiik 100</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-funkin-funkin-vs-matt-eddsworld','Vs Matt Eddsworld')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Eddsworld')">☆</button><p>Vs Matt Eddsworld</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/vs-matt-wiik-1000-fnf-mod','Vs Matt WiiK 1000')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt WiiK 1000')">☆</button><p>Vs Matt WiiK 1000</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-wiik-4-fanmade','Vs Matt Wiik 4')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Wiik 4')">☆</button><p>Vs Matt Wiik 4</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-i-n-inchiro-au','Vs Matt I.N')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt I.N')">☆</button><p>Vs Matt I.N</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-tko-but-matt-goes-all-out','TKO Matt All Out')"><button class="fav-btn" onclick="toggleFav(event,'TKO Matt All Out')">☆</button><p>TKO Matt All Out</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-deluxe-rematch','Vs Matt Deluxe Rematch')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Deluxe Rematch')">☆</button><p>Vs Matt Deluxe Rematch</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-wiik-3-fanmade','Vs Matt WIIK 3')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt WIIK 3')">☆</button><p>Vs Matt WIIK 3</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-matt-wiik-b-sides','Vs Matt Wiik B-Sides')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Wiik B-Sides')">☆</button><p>Vs Matt Wiik B-Sides</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matt-neo','Vs Matt Neo')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matt Neo')">☆</button><p>Vs Matt Neo</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-matts-pursuit-deluxe-edition','Vs Matts Pursuit Deluxe')"><button class="fav-btn" onclick="toggleFav(event,'Vs Matts Pursuit Deluxe')">☆</button><p>Vs Matts Pursuit Deluxe</p></div>
+
+        <!-- ── SHAGGY MODS ── -->
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy','Vs Shaggy v2')"><button class="fav-btn" onclick="toggleFav(event,'Vs Shaggy v2')">☆</button><p>Vs Shaggy v2</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy-2-5','Vs Shaggy 2.5')"><button class="fav-btn" onclick="toggleFav(event,'Vs Shaggy 2.5')">☆</button><p>Vs Shaggy 2.5</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-remastered','Vs Shaggy Remastered')"><button class="fav-btn" onclick="toggleFav(event,'Vs Shaggy Remastered')">☆</button><p>Vs Shaggy Remastered</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy-hd','Vs Shaggy HD')"><button class="fav-btn" onclick="toggleFav(event,'Vs Shaggy HD')">☆</button><p>Vs Shaggy HD</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-3-0-fan-made','Vs Shaggy 3.0')"><button class="fav-btn" onclick="toggleFav(event,'Vs Shaggy 3.0')">☆</button><p>Vs Shaggy 3.0</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy-d-sides','Vs Shaggy D-Sides')"><button class="fav-btn" onclick="toggleFav(event,'Vs Shaggy D-Sides')">☆</button><p>Vs Shaggy D-Sides</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-minus-shaggy','Vs Minus Shaggy')"><button class="fav-btn" onclick="toggleFav(event,'Vs Minus Shaggy')">☆</button><p>Vs Minus Shaggy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-blue-shaggy-chapter-7-8-fanmade','Vs Blue Shaggy')"><button class="fav-btn" onclick="toggleFav(event,'Vs Blue Shaggy')">☆</button><p>Vs Blue Shaggy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-expurgation-expansion','Vs Shaggy Expurgation')"><button class="fav-btn" onclick="toggleFav(event,'Vs Shaggy Expurgation')">☆</button><p>Vs Shaggy Expurgation</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-shaggy-god-eater-retrospecter-remix','Shaggy God Eater')"><button class="fav-btn" onclick="toggleFav(event,'Shaggy God Eater')">☆</button><p>Shaggy God Eater</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-shaggy-sings-endless-with-6k','Shaggy Endless 6k')"><button class="fav-btn" onclick="toggleFav(event,'Shaggy Endless 6k')">☆</button><p>Shaggy Endless 6k</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-pixelated-shaggy','Vs Pixelated Shaggy')"><button class="fav-btn" onclick="toggleFav(event,'Vs Pixelated Shaggy')">☆</button><p>Vs Pixelated Shaggy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-pibby-shaggy','Vs Pibby Shaggy')"><button class="fav-btn" onclick="toggleFav(event,'Vs Pibby Shaggy')">☆</button><p>Vs Pibby Shaggy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-shaggy-sings-big-shot','Shaggy Big Shot')"><button class="fav-btn" onclick="toggleFav(event,'Shaggy Big Shot')">☆</button><p>Shaggy Big Shot</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-shaggy-x-matt','Vs Shaggy x Matt')"><button class="fav-btn" onclick="toggleFav(event,'Vs Shaggy x Matt')">☆</button><p>Vs Shaggy x Matt</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-rev-mixed-vs-matt-and-shaggy','Rev-Mixed Matt & Shaggy')"><button class="fav-btn" onclick="toggleFav(event,'Rev-Mixed Matt Shaggy')">☆</button><p>Rev-Mixed Matt Shaggy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-shaggy-x-matt-x-tricky-x-bob-x-whitty-x-zardy','Shaggy Matt Multi')"><button class="fav-btn" onclick="toggleFav(event,'Shaggy Matt Multi')">☆</button><p>Shaggy Matt Multi</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-shaggy-x-matt-sad-version','Shaggy x Matt Sad')"><button class="fav-btn" onclick="toggleFav(event,'Shaggy x Matt Sad')">☆</button><p>Shaggy x Matt Sad</p></div>
+
+        <!-- ── BOB MODS ── -->
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob','Vs Bob')"><button class="fav-btn" onclick="toggleFav(event,'Vs Bob')">☆</button><p>Vs Bob</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob-v2-0-bobs-onslaught','Vs Bob v2.0 Onslaught')"><button class="fav-btn" onclick="toggleFav(event,'Vs Bob v2.0 Onslaught')">☆</button><p>Vs Bob v2.0 Onslaught</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bobs-b-side-onslaught','Bob B-Sides Onslaught')"><button class="fav-btn" onclick="toggleFav(event,'Bob B-Sides Onslaught')">☆</button><p>Bob B-Sides Onslaught</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-bob-high-effort','Vs Bob High Effort')"><button class="fav-btn" onclick="toggleFav(event,'Vs Bob High Effort')">☆</button><p>Vs Bob High Effort</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob-remastered','Vs Bob Remastered')"><button class="fav-btn" onclick="toggleFav(event,'Vs Bob Remastered')">☆</button><p>Vs Bob Remastered</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bob-vs-opheebob-mod','Bob & Opheebob Date')"><button class="fav-btn" onclick="toggleFav(event,'Bob & Opheebob Date')">☆</button><p>Bob & Opheebob Date</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-bob-velseb','Vs Bob Velseb')"><button class="fav-btn" onclick="toggleFav(event,'Vs Bob Velseb')">☆</button><p>Vs Bob Velseb</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-bob-overhaul','Bob Overhaul')"><button class="fav-btn" onclick="toggleFav(event,'Bob Overhaul')">☆</button><p>Bob Overhaul</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bob-corrupted-bf','Bob Corrupted BF')"><button class="fav-btn" onclick="toggleFav(event,'Bob Corrupted BF')">☆</button><p>Bob Corrupted BF</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-funkween-vs-big-bob','Vs Big Bob FunkWeen')"><button class="fav-btn" onclick="toggleFav(event,'Vs Big Bob FunkWeen')">☆</button><p>Vs Big Bob (FunkWeen)</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-lets-chat-bob-vs-ron','Bob vs Ron Chat')"><button class="fav-btn" onclick="toggleFav(event,'Bob vs Ron Chat')">☆</button><p>Bob vs Ron Chat</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-d-side-bob','Vs D-Side Bob')"><button class="fav-btn" onclick="toggleFav(event,'Vs D-Side Bob')">☆</button><p>Vs D-Side Bob</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-bobs-lullaby-mod','Bob\'s Lullaby')"><button class="fav-btn" onclick="toggleFav(event,'Bob\'s Lullaby')">☆</button><p>Bob's Lullaby</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/bobs-big-day-literally-every-fnf-mod-return-ever','Bob\'s Big Day')"><button class="fav-btn" onclick="toggleFav(event,'Bob\'s Big Day')">☆</button><p>Bob's Big Day</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-ron-3-0','Vs Ron 3.0')"><button class="fav-btn" onclick="toggleFav(event,'Vs Ron 3.0')">☆</button><p>Vs Ron 3.0</p></div>
+
+        <!-- ── HEROBRINE MODS ── -->
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-friday-night-cursed-vs-herobrine','Friday Night Cursed Vs Herobrine')"><button class="fav-btn" onclick="toggleFav(event,'Friday Night Cursed Vs Herobrine')">☆</button><p>Friday Night Cursed Vs Herobrine</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-herobrine-reborn','Vs Herobrine Reborn 2.5')"><button class="fav-btn" onclick="toggleFav(event,'Vs Herobrine Reborn 2.5')">☆</button><p>Vs Herobrine Reborn 2.5</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-blocky-myths-vs-herobrine','Blocky Myths Vs Herobrine')"><button class="fav-btn" onclick="toggleFav(event,'Blocky Myths Vs Herobrine')">☆</button><p>Blocky Myths Vs Herobrine</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-bedrock-bottom-vs-herobrine','Bedrock Bottom Vs Herobrine')"><button class="fav-btn" onclick="toggleFav(event,'Bedrock Bottom Vs Herobrine')">☆</button><p>Bedrock Bottom Vs Herobrine</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-herobrine-sighting','Herobrine Sighting')"><button class="fav-btn" onclick="toggleFav(event,'Herobrine Sighting')">☆</button><p>Herobrine Sighting</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-funkin-craft-vs-herobrine','Funkin Craft Vs Herobrine')"><button class="fav-btn" onclick="toggleFav(event,'Funkin Craft Vs Herobrine')">☆</button><p>Funkin Craft Vs Herobrine</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-herobrines-curse','Herobrine\'s Curse')"><button class="fav-btn" onclick="toggleFav(event,'Herobrine\'s Curse')">☆</button><p>Herobrine's Curse</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-minecraft-takeover','Minecraft Takeover')"><button class="fav-btn" onclick="toggleFav(event,'Minecraft Takeover')">☆</button><p>Minecraft Takeover</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-minecraft-funky-edition','Minecraft Funky Edition')"><button class="fav-btn" onclick="toggleFav(event,'Minecraft Funky Edition')">☆</button><p>Minecraft Funky Edition</p></div>
+
+        <!-- ── MISC / EXTRAS ── -->
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-hd','FNF HD v4')"><button class="fav-btn" onclick="toggleFav(event,'FNF HD v4')">☆</button><p>FNF HD v4</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-party-week','Party Week')"><button class="fav-btn" onclick="toggleFav(event,'Party Week')">☆</button><p>Party Week</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-eddsworld','Vs Eddsworld')"><button class="fav-btn" onclick="toggleFav(event,'Vs Eddsworld')">☆</button><p>Vs Eddsworld</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-roblox-doors','Vs Roblox Doors')"><button class="fav-btn" onclick="toggleFav(event,'Vs Roblox Doors')">☆</button><p>Vs Roblox Doors</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-indie-cross-crossed-out','Indie Cross Crossed Out')"><button class="fav-btn" onclick="toggleFav(event,'Indie Cross Crossed Out')">☆</button><p>Indie Cross Crossed Out</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-zardy-foolhardy-mod-pack','Zardy Foolhardy Pack')"><button class="fav-btn" onclick="toggleFav(event,'Zardy Foolhardy Pack')">☆</button><p>Zardy Foolhardy Pack</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-darkness-takeover-vs-pibby-family-guy','Pibby Family Guy')"><button class="fav-btn" onclick="toggleFav(event,'Pibby Family Guy')">☆</button><p>Pibby Family Guy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-lost-my-mind-breaking-point','Lost My Mind')"><button class="fav-btn" onclick="toggleFav(event,'Lost My Mind')">☆</button><p>Lost My Mind</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-undertale-last-breath-vs-sans','Vs Sans Last Breath')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sans Last Breath')">☆</button><p>Vs Sans Last Breath</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-bambi-strident-crisis','Vs Bambi Strident')"><button class="fav-btn" onclick="toggleFav(event,'Vs Bambi Strident')">☆</button><p>Vs Bambi Strident</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-sky-reborn','Vs Sky Reborn')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sky Reborn')">☆</button><p>Vs Sky Reborn</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-fnaf-vs-freddy-chica-foxy-bonnie','Vs FNAF Freddy Crew')"><button class="fav-btn" onclick="toggleFav(event,'Vs FNAF Freddy Crew')">☆</button><p>Vs FNAF Freddy Crew</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/animation-vs-friday-night-funkin-mod','Animation VS FNF Full')"><button class="fav-btn" onclick="toggleFav(event,'Animation VS FNF Full')">☆</button><p>Animation VS FNF Full</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-starving-artist-2-retaken-sanity','Starving Artist Retaken')"><button class="fav-btn" onclick="toggleFav(event,'Starving Artist Retaken')">☆</button><p>Starving Artist Retaken</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-hex-mod-full-week','Vs Hex Full Week')"><button class="fav-btn" onclick="toggleFav(event,'Vs Hex Full Week')">☆</button><p>Vs Hex Full Week</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-dababy','Vs DaBaby')"><button class="fav-btn" onclick="toggleFav(event,'Vs DaBaby')">☆</button><p>Vs DaBaby</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-mid-fight-masses-deluxe-edition','Mid-Fight Masses Deluxe')"><button class="fav-btn" onclick="toggleFav(event,'Mid-Fight Masses Deluxe')">☆</button><p>Mid-Fight Masses Deluxe</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-b-side-redux','B-Side Redux')"><button class="fav-btn" onclick="toggleFav(event,'B-Side Redux')">☆</button><p>B-Side Redux</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-character-test-playground','Character Test Playground')"><button class="fav-btn" onclick="toggleFav(event,'Character Test Playground')">☆</button><p>Character Test</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-sarventes-mid-fight-masses','Sarventes Masses')"><button class="fav-btn" onclick="toggleFav(event,'Sarventes Masses')">☆</button><p>Sarventes Masses</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-kapi','Vs KAPI v2')"><button class="fav-btn" onclick="toggleFav(event,'Vs KAPI v2')">☆</button><p>Vs KAPI v2</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-galaxy-mod','In The Galaxy')"><button class="fav-btn" onclick="toggleFav(event,'In The Galaxy')">☆</button><p>In The Galaxy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-silly-billy-vs-yourself','Silly Billy')"><button class="fav-btn" onclick="toggleFav(event,'Silly Billy')">☆</button><p>Silly Billy</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-dashing','Friday Night Dashing')"><button class="fav-btn" onclick="toggleFav(event,'Friday Night Dashing')">☆</button><p>Friday Night Dashing</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-omni-man','Vs Omni-Man')"><button class="fav-btn" onclick="toggleFav(event,'Vs Omni-Man')">☆</button><p>Vs Omni-Man</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-void','Vs Void')"><button class="fav-btn" onclick="toggleFav(event,'Vs Void')">☆</button><p>Vs Void</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-garcello','Vs Garcello')"><button class="fav-btn" onclick="toggleFav(event,'Vs Garcello 2')">☆</button><p>Vs Garcello</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-retrospecter','Vs RetroSpecter')"><button class="fav-btn" onclick="toggleFav(event,'Vs RetroSpecter')">☆</button><p>Vs RetroSpecter</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-marios-madness-v2','Mario\'s Madness V2')"><button class="fav-btn" onclick="toggleFav(event,'Mario\'s Madness V2')">☆</button><p>Mario's Madness V2</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-slendytubbies','Vs Slendytubbies')"><button class="fav-btn" onclick="toggleFav(event,'Vs Slendytubbies')">☆</button><p>Vs Slendytubbies</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-pico-school','Pico School')"><button class="fav-btn" onclick="toggleFav(event,'Pico School')">☆</button><p>Pico School</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-scratch-cat','Vs Scratch Cat')"><button class="fav-btn" onclick="toggleFav(event,'Vs Scratch Cat')">☆</button><p>Vs Scratch Cat</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-brainrot-vs-tung-tung-tung-sahur','Brainrot Tung Tung')"><button class="fav-btn" onclick="toggleFav(event,'Brainrot Tung Tung')">☆</button><p>Brainrot Tung Tung</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-slaughter-me-funkin','Slaughter Me Funkin')"><button class="fav-btn" onclick="toggleFav(event,'Slaughter Me Funkin')">☆</button><p>Slaughter Me Funkin</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-impostor-among-us-v4','Vs Impostor V4')"><button class="fav-btn" onclick="toggleFav(event,'Vs Impostor V4')">☆</button><p>Vs Impostor V4</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sonic-exe-2-0','Vs Sonic.EXE 2.0 KBH')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sonic.EXE 2.0 KBH')">☆</button><p>Vs Sonic.EXE 2.0</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-qt-rewired','QT Rewired')"><button class="fav-btn" onclick="toggleFav(event,'QT Rewired')">☆</button><p>QT Rewired</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-hatsune-miku','Vs Hatsune Miku')"><button class="fav-btn" onclick="toggleFav(event,'Vs Hatsune Miku')">☆</button><p>Vs Hatsune Miku</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-ultrakill','Vs ULTRAKILL')"><button class="fav-btn" onclick="toggleFav(event,'Vs ULTRAKILL')">☆</button><p>Vs ULTRAKILL</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-the-full-ass-tricky','The Full Ass Tricky')"><button class="fav-btn" onclick="toggleFav(event,'The Full Ass Tricky')">☆</button><p>The Full Ass Tricky</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-impostor-v5','Vs Impostor V5')"><button class="fav-btn" onclick="toggleFav(event,'Vs Impostor V5')">☆</button><p>Vs Impostor V5</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-smoke-em-out-struggle','Smoke Em Out Struggle')"><button class="fav-btn" onclick="toggleFav(event,'Smoke Em Out Struggle')">☆</button><p>Smoke Em Out Struggle</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-whitty-definitive','Vs Whitty Definitive')"><button class="fav-btn" onclick="toggleFav(event,'Vs Whitty Definitive')">☆</button><p>Vs Whitty Definitive</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-sky-redux','Vs Sky Redux')"><button class="fav-btn" onclick="toggleFav(event,'Vs Sky Redux')">☆</button><p>Vs Sky Redux</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nonsense-v2','Vs Nonsense V2')"><button class="fav-btn" onclick="toggleFav(event,'Vs Nonsense V2')">☆</button><p>Vs Nonsense V2</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-nonsense','Vs Nonsense IRL')"><button class="fav-btn" onclick="toggleFav(event,'Vs Nonsense IRL')">☆</button><p>Vs Nonsense IRL</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-neo','Neo v3.0')"><button class="fav-btn" onclick="toggleFav(event,'Neo v3.0')">☆</button><p>Neo v3.0</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/funkin-mix','Funkin MIX')"><button class="fav-btn" onclick="toggleFav(event,'Funkin MIX')">☆</button><p>Funkin MIX</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-forsaken','Vs Forsaken')"><button class="fav-btn" onclick="toggleFav(event,'Vs Forsaken')">☆</button><p>Vs Forsaken</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-remnants','FNF Remnants')"><button class="fav-btn" onclick="toggleFav(event,'FNF Remnants')">☆</button><p>FNF Remnants</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-crimson-eclipse','Crimson Eclipse')"><button class="fav-btn" onclick="toggleFav(event,'Crimson Eclipse')">☆</button><p>Crimson Eclipse</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-hating-simulator-rosegold','Hating RoseGold')"><button class="fav-btn" onclick="toggleFav(event,'Hating RoseGold')">☆</button><p>Hating RoseGold</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-fire-in-the-hole','Fire In The Hole')"><button class="fav-btn" onclick="toggleFav(event,'Fire In The Hole')">☆</button><p>Fire In The Hole</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-with-lyrics','FNF With Lyrics')"><button class="fav-btn" onclick="toggleFav(event,'FNF With Lyrics')">☆</button><p>FNF With Lyrics</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-freddy-fazbear','Vs Freddy Fazbear')"><button class="fav-btn" onclick="toggleFav(event,'Vs Freddy Fazbear')">☆</button><p>Vs Freddy Fazbear</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-niervin','Vs Niervin')"><button class="fav-btn" onclick="toggleFav(event,'Vs Niervin')">☆</button><p>Vs Niervin</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-arrow-funk','Arrow Funk')"><button class="fav-btn" onclick="toggleFav(event,'Arrow Funk')">☆</button><p>Arrow Funk</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-fevertown-characters-sings-endless','FeverTown Endless')"><button class="fav-btn" onclick="toggleFav(event,'FeverTown Endless')">☆</button><p>FeverTown Endless</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/fnf-vs-catnap-v2','Vs CatNap V2')"><button class="fav-btn" onclick="toggleFav(event,'Vs CatNap V2')">☆</button><p>Vs CatNap V2</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-vs-big-sister','Vs Big Sister')"><button class="fav-btn" onclick="toggleFav(event,'Vs Big Sister')">☆</button><p>Vs Big Sister</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/friday-night-funkin-friday-night-meaty','Friday Night Meaty')"><button class="fav-btn" onclick="toggleFav(event,'Friday Night Meaty')">☆</button><p>Friday Night Meaty</p></div>
+        <div class="card" onclick="playMod('https://kbhgames.com/game/poppy-funktime-vs-bunzo-bunny-fnf-mod','Vs Bunzo Bunny')"><button class="fav-btn" onclick="toggleFav(event,'Vs Bunzo Bunny')">☆</button><p>Vs Bunzo Bunny</p></div>
+
+    </div>
+</main>
+
+<!-- ══════════════════════════════════════════
+     TOAST + BACK TO TOP
+══════════════════════════════════════════ -->
+<div id="toast"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+// ── STATE ──────────────────────────────────────────────────────────────────
+const FAV_KEY  = 'moonFNF_favs';
+let   favorites = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+let   activeFilter  = 'all';
+let   activeSort    = 'default';
+let   originalOrder = [];   // captured once on DOMContentLoaded
+
+// ── PLAYER ─────────────────────────────────────────────────────────────────
+function playMod(url, name) {
+    document.getElementById('player').src = url;
+    document.getElementById('title').innerText = name;
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('player').requestFullscreen &&
+        document.getElementById('player').requestFullscreen();
+    showToast('▶ Now playing: ' + name);
+}
+
+function exitMod() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('player').src = '';
+    document.exitFullscreen && document.exitFullscreen();
+}
+
+// ESC key exits overlay
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') exitMod();
+});
+
+// ── SEARCH + FILTER + SORT ─────────────────────────────────────────────────
+function filterMods() {
+    const query  = document.getElementById('search-input').value.toLowerCase().trim();
+    const cards  = document.querySelectorAll('#mod-grid .card');
+    let   visible = 0;
+
+    cards.forEach(card => {
+        const name = card.querySelector('p').innerText.toLowerCase();
+        const matchSearch = !query || name.includes(query);
+        const matchFilter = activeFilter === 'all' || name.includes(activeFilter);
+        if (matchSearch && matchFilter) {
+            card.classList.remove('hidden');
+            visible++;
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+
+    const total = cards.length;
+    const rc = document.getElementById('result-count');
+    rc.textContent = query || activeFilter !== 'all'
+        ? `${visible} of ${total} mods`
+        : `${total} mods total`;
+
+    document.getElementById('no-results').classList.toggle('show', visible === 0);
+    updateModCountBanner(visible);
+}
+
+function setFilter(tag, el) {
+    activeFilter = tag;
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    filterMods();
+}
+
+function sortMods() {
+    activeSort = document.getElementById('sort-select').value;
+    const grid  = document.getElementById('mod-grid');
+    const cards = [...grid.querySelectorAll('.card')];
+
+    if (activeSort === 'az') {
+        cards.sort((a, b) => a.querySelector('p').innerText.localeCompare(b.querySelector('p').innerText));
+    } else if (activeSort === 'za') {
+        cards.sort((a, b) => b.querySelector('p').innerText.localeCompare(a.querySelector('p').innerText));
+    } else if (activeSort === 'favfirst') {
+        cards.sort((a, b) => {
+            const aF = favorites.includes(a.querySelector('p').innerText) ? -1 : 1;
+            const bF = favorites.includes(b.querySelector('p').innerText) ? -1 : 1;
+            return aF - bF;
+        });
+    } else {
+        // restore original DOM order
+        originalOrder.forEach(c => grid.appendChild(c));
+        filterMods();
+        return;
+    }
+
+    cards.forEach(c => grid.appendChild(c));
+    filterMods();
+}
+
+// ── FAVORITES ──────────────────────────────────────────────────────────────
+function toggleFav(e, name) {
+    e.stopPropagation();
+    const btn = e.currentTarget;
+    const idx = favorites.indexOf(name);
+
+    if (idx === -1) {
+        favorites.push(name);
+        btn.textContent = '★';
+        btn.classList.add('active');
+        btn.closest('.card').classList.add('fav-highlight');
+        showToast('⭐ Added to favorites: ' + name);
+    } else {
+        favorites.splice(idx, 1);
+        btn.textContent = '☆';
+        btn.classList.remove('active');
+        btn.closest('.card').classList.remove('fav-highlight');
+        showToast('Removed: ' + name);
+    }
+
+    localStorage.setItem(FAV_KEY, JSON.stringify(favorites));
+    renderFavPanel();
+}
+
+function renderFavPanel() {
+    const grid = document.getElementById('fav-grid');
+    grid.innerHTML = '';
+    if (favorites.length === 0) {
+        grid.innerHTML = '<p style="color:#b24cd8;font-size:0.95em;">No favorites yet — click ☆ on any mod.</p>';
+        return;
+    }
+    favorites.forEach(name => {
+        const pill = document.createElement('div');
+        pill.className = 'fav-pill';
+        pill.textContent = name;
+        pill.onclick = () => {
+            document.getElementById('search-input').value = name;
+            filterMods();
+            document.getElementById('fav-panel').classList.remove('open');
+            window.scrollTo({top: document.querySelector('.grid').offsetTop - 80, behavior: 'smooth'});
+        };
+        grid.appendChild(pill);
+    });
+}
+
+function toggleFavPanel() {
+    const panel = document.getElementById('fav-panel');
+    panel.classList.toggle('open');
+    renderFavPanel();
+}
+
+// Apply saved fav state to buttons on load
+function applyFavState() {
+    document.querySelectorAll('#mod-grid .card').forEach(card => {
+        const name = card.querySelector('p').innerText;
+        if (favorites.includes(name)) {
+            const btn = card.querySelector('.fav-btn');
+            if (btn) { btn.textContent = '★'; btn.classList.add('active'); }
+            card.classList.add('fav-highlight');
+        }
+    });
+}
+
+// ── MOD COUNT BANNER ───────────────────────────────────────────────────────
+function updateModCountBanner(count) {
+    const total = document.querySelectorAll('#mod-grid .card').length;
+    document.getElementById('mod-count-banner').textContent =
+        `${count === total ? total : count + ' / ' + total} mods in the hub`;
+}
+
+// ── TOAST ──────────────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── BACK TO TOP ────────────────────────────────────────────────────────────
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+    backTop.classList.toggle('visible', window.scrollY > 400);
+});
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    originalOrder = [...document.querySelectorAll('#mod-grid .card')];
+    applyFavState();
+    filterMods();
+});
+</script>
+
 </body>
 </html>
